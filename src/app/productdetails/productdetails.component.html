@@ -1,0 +1,51 @@
+<div class="card m-auto">
+  <div class="card-header">
+    <h4>Garden Cart</h4>
+  </div>
+
+  <div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="p-3 bg-light">
+          <div class="row">
+            <div class="col-md-6">Name</div>
+            <div class="col-md-6">{{ product.productName }}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">Code</div>
+            <div class="col-md-6">{{ product.productCode }}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">Description</div>
+            <div class="col-md-6">{{ product.description }}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">Availablilty</div>
+            <div class="col-md-6">{{ product.releaseDate }}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">Price</div>
+            <div class="col-md-6">{{ product.price }}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">5 Star Rating</div>
+            <div class="col-md-6">
+              <app-star [rating]="product.starRating"></app-star>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3 bg-light d-flex justify-content-center">
+          <img src="{{ product.imageUrl }}" alt="" srcset="" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <a class="btn btn-default" (click)="onBack()" style="width: 100px">
+      <i class="fa fa-arrow-left"></i> Back
+    </a>
+  </div>
+</div>

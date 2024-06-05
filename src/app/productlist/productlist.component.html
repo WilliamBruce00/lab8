@@ -1,0 +1,50 @@
+<div class="card">
+  <div class="card-header">
+    <h4>Product list</h4>
+  </div>
+  <div class="card-body">
+    <div class="row mb-2">
+      <label class="col-2">Filter:</label>
+      <input type="text" class="col-3" [(ngModel)]="listFilter" />
+      <div class="col-7"></div>
+    </div>
+    <div class="row mb-4">
+      <h2 class="col-12">Filter by:</h2>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Product</th>
+          <th>Code</th>
+          <th>Available</th>
+          <th>Price</th>
+          <th>5 Star Rating</th>
+          <th>Action</th>
+        </tr>
+
+        @for (item of products|paginate:{itemsPerPage:3,currentPage: p}; track
+        $index) {
+        <tr>
+          <td><img src="{{ item.imageUrl }}" width="50px" /></td>
+          <td (click)="viewDetails(item.productId)">
+            {{ item.productName }}
+          </td>
+          <td>{{ item.productCode }}</td>
+          <td>{{ item.releaseDate }}</td>
+          <td>{{ item.price }}</td>
+          <td>
+            <app-star
+              [rating]="item.starRating"
+              (dataEvent)="receiveData($event)"
+            ></app-star>
+          </td>
+          <td>Chỉnh sửa</td>
+        </tr>
+        }
+      </thead>
+    </table>
+  </div>
+</div>
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
